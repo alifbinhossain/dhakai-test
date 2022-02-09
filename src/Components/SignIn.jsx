@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -7,6 +7,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const redirectPath = location.state?.path || "/dashboard";
+  const [id, setId] = useState("");
 
   const {
     register,
@@ -14,6 +15,15 @@ const SignIn = () => {
     handleSubmit,
   } = useForm();
 
+  //get device id from the given url
+  useEffect(() => {
+    fetch("https://devapi.dhakai.com/api/v2/deviceuid")
+      .then((res) => res.json())
+      .then((data) => setId(data.result.deviceUuid))
+      .catch((err) => console.log(err.message));
+  }, []);
+
+  // send post request to get access into the dashboard
   const onSubmit = (data) => {
     fetch("https://devapi.dhakai.com/api/v2/login-buyer", {
       method: "POST",
@@ -24,7 +34,7 @@ const SignIn = () => {
       body: JSON.stringify({
         auth: {
           email: data.email,
-          deviceUuid: "1213sdsfs456sdsd778sds87787dsd",
+          deviceUuid: id,
         },
         password: data.password,
       }),
