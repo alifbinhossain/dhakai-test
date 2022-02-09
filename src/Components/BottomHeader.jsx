@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import categories from "./categories";
+import categories from "../Data/categories";
 import arrow from "../assets/images/right-arrow.svg";
 
 const BottomHeader = () => {

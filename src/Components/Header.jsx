@@ -7,7 +7,7 @@ import navIcon1 from "../assets/images/navbar/Iconly_Bold_Chat.svg";
 import navIcon2 from "../assets/images/navbar/Iconly_Bold_Notification.svg";
 import navIcon3 from "../assets/images/navbar/lacoste-logo.svg";
 
-import { Menu, MenuItem, MenuButton, SubMenu } from "@szhsin/react-menu";
+import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 import "@szhsin/react-menu/dist/core.css";
 
 const Header = () => {
@@ -56,6 +56,9 @@ const Header = () => {
         </a>
       </div>
 
+      {/* -------------------------------------------------------------------------- */
+      /*                              FOR MOBILE DEVICE                             */
+      /* -------------------------------------------------------------------------- */}
       <Menu
         className="menu"
         menuButton={
@@ -219,10 +222,10 @@ const HeaderContainer = styled.nav`
     }
   }
 
+  //MEDIA QUERY
   @media (max-width: 768px) {
     padding: 1rem 0 1rem 5rem;
 
-    /* display: none; */
     .search-box,
     .notification-box {
       display: none;

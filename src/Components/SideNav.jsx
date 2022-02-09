@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import icons from "./icons";
+import icons from "../Data/icons";
 import logo from "../assets/images/sideNav/logo.svg";
 
 const SideNav = () => {

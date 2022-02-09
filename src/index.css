@@ -44,3 +44,8 @@ ul {
 body {
   font-family: SFUIDisplay;
 }
+
+body.swal2-shown > [aria-hidden="true"] {
+  transition: 0.1s filter;
+  filter: blur(5px);
+}

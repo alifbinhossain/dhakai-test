@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import popupError from "../popup/popupError";
+import popupSuccess from "../popup/popupSuccess";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -43,14 +45,11 @@ const SignIn = () => {
       .then((data) => {
         const token = data.result.token;
         if (token) {
-          localStorage.setItem("token", JSON.stringify(token));
+          localStorage.setItem("token", JSON.stringify(token)); //set the token into the local storage
           navigate(redirectPath, { replace: true });
+          popupSuccess("Successfully logged in!");
         } else {
-          alert(`
-          Invalid email & password!
-          email : rajib2@gmail.com
-          password: 123456
-          `);
+          popupError("Invalid email & password!");
         }
       })
       .catch((err) => console.log(err.message));
@@ -58,12 +57,12 @@ const SignIn = () => {
 
   return (
     <SignInContainer>
-      <h1>
+      <h1 data-aos="fade-right">
         Dhakai Test .<br />
         <span> by Alif Bin Hossain</span>
       </h1>
 
-      <div className="form-content">
+      <div className="form-content" data-aos="fade-left">
         <h1>Sign In</h1>
 
         {/* -------------------------------------------------------------------------- */

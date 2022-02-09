@@ -5,18 +5,19 @@ import ShopCard from "./ShopCard";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const Cards = () => {
+  const skip = 0;
   const token = JSON.parse(localStorage.getItem("token"));
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [limit, setLimit] = useState(8);
   const [count, setCount] = useState(0);
   const [hasMore, setHasMore] = useState(true);
-  const skip = 0;
 
   if (count === limit) {
     setHasMore(false);
   }
 
+  //get the manufactures data from the given api
   useEffect(() => {
     setLoading(true);
     if (token.length) {

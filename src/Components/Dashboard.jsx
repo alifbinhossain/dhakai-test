@@ -7,10 +7,11 @@ import SideNav from "./SideNav";
 
 const Dashboard = () => {
   return (
-    <DashboardContainer>
+    <DashboardContainer data-aos="fade-out">
       <div className="side-nav">
         <SideNav />
       </div>
+
       <div className="content">
         <Header />
         <BottomHeader />
@@ -33,8 +34,5 @@ const DashboardContainer = styled.div`
 
   .content {
     flex: 1;
-  }
-
-  @media (max-width: 768px) {
   }
 `;
